@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Contas</title>
 </head>
 <body>
-    <p>Seja bem vindo.</p>
-    <p>Agora são: {{now}}</p>
-    <ul>
-        {% for tran in transacoes %}
-            <li>{{tran}}</li>
-        {% endfor %}
-    </ul>
+    <p>Bem vindo ao Contas.</p>
+    <a href="{% url 'url_new' %}">Criar nova transação</a>
+    <a href="{% url 'url_list' %}">Listar Transações</a>
 </body>
 </html>

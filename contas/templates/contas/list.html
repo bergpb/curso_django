@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contas</title>
+</head>
+<body>
+    <h2>Listagem</h2>
+    {% if transacoes|length > 0 %}
+        <table>
+            <tr>
+                <td>Data</td>
+                <td>Descrição</td>
+                <td>Valor</td>
+                <td>Categoria</td>
+                <td>Observações</td>
+                <td>Ações</td>
+            </tr>
+            {% for t in transacoes %}
+                <tr>
+                    <td>{{ t.data }}</td>
+                    <td>{{ t.descricao }}</td>
+                    <td>{{ t.valor }}</td>
+                    <td>{{ t.categoria }}</td>
+                    <td>{{ t.observacoes }}</td>
+                    <td>
+                        <a href="{% url 'url_update' t.id %}">Editar</a>
+                        <a href="{% url 'url_delete' t.id %}">Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h5>Sem informações</h5>
+    {% endif %}
+    <a href="{% url 'url_new' %}">Criar nova transação</a>
+</body>
+</html>
