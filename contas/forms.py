@@ -1,8 +1,10 @@
-from django.forms import ModelForm
-from .models import Transacao
+from django.forms import ModelForm, Textarea
+from .models import Transaction
 
-
-class TransacaoForm(ModelForm):
-    class Meta:
-        model = Transacao
-        fields = ['data', 'descricao', 'valor', 'observacoes', 'categoria']
+class TransactionForm(ModelForm):
+  class Meta:
+      model = Transaction
+      fields = ['data', 'descricao', 'valor', 'observacoes', 'categoria']
+      widgets = {
+        'observacoes': Textarea(attrs={'rows':4, 'cols':15}),
+      }

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load fontawesome %}
+
+{% block content %}
+	<h4>Cadastre-se</h4>
+	<hr class="mt-0 mb-4">
+	<form method="POST">
+		{% csrf_token %}
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-sm-12">
+				{{ form.username|as_crispy_field }}
+				{{ form.email|as_crispy_field }}
+				{{ form.password1|as_crispy_field }}
+				{{ form.password2|as_crispy_field }}
+				<button class="btn btn-outline-info btn-block btn-sm mt-2" type="submit" value="registrar">
+					Registrar
+				</button>
+			</div>
+		</div>
+	</form>
+	<div class="border-top mt-3">
+		<small class="text-muted">Já tem uma conta?
+			<a class="ml-2" href="{% url 'login' %}">Entre aqui!</a>
+		</small>
+	</div>
+{% endblock %}

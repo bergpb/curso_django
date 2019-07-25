@@ -1,17 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Contas</title>
-    </head>
-    <body>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Salvar">
-            {% if transacao %}
-                <a href="{% url 'url_delete' transacao.id %}">Remover</a>
-            {% endif %}
-        </form>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load fontawesome %}
+
+{% block content %}
+    <h4>Nova Transação</h4>
+    <hr class="mt-0 mb-4">
+    <form method="POST">
+    	{% csrf_token %}
+    	<div class="row">
+    		<div class="col-md-3 col-sm-12">
+    			{{ form.descricao|as_crispy_field }}
+    		</div>
+    		<div class="col-md-3 col-sm-12">
+    			{{ form.data|as_crispy_field }}
+    		</div>
+    		<div class="col-md-3 col-sm-12">
+    			{{ form.valor|as_crispy_field }}
+    		</div>
+    		<div class="col-md-3 col-sm-12">
+    			{{ form.categoria|as_crispy_field }}
+    		</div>
+    	</div>
+        {{ form.observacoes|as_crispy_field }}
+    	<a class="btn btn-info btn-sm" title="Voltar" href="{% url 'home' %}">
+            {% fontawesome_icon 'arrow-left' %}
+        </a>
+        <button type="submit" title="Salvar" class="btn btn-success btn-sm">
+    		{% fontawesome_icon 'floppy-o' %}
+    	</button>
+    	{% if transacao %}
+    	   <a class="btn btn-danger btn-sm" title="Remover"  href="{% url 'url_delete' transacao.id %}">
+               {% fontawesome_icon 'trash' %}
+           </a>
+    	{% endif %}
+    </form>
+    <script>
+      $(function () {
+        $("#id_data").datepicker({
+          format:'dd/mm/yyyy',
+        });
+      });
+    </script>
+{% endblock %}

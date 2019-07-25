@@ -1,0 +1,85 @@
+{% load static %}
+
+{% load fontawesome %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<title>Contas</title>
+    {% fontawesome_stylesheet %}
+	<link rel="stylesheet" href="{% static 'contas/css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'contas/css/bootstrap.min.css' %}">
+	<script src="{% static 'contas/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'contas/js/bootstrap.min.js' %}"></script>
+
+	<!-- Fengyuan Chen's Datepicker -->
+	<link rel="stylesheet" href="{% static 'contas/css/datepicker.min.css' %}">
+	<script src="{% static 'contas/js/datepicker.min.js' %}"></script>
+</head>
+
+<body>
+	<nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark justify-content-between">
+		<a class="navbar-brand" href="{% url 'home' %}">Transações</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarContent" aria-controls="navbarContent"
+                aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-auto" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+    		{% if user.is_authenticated %}
+    			<li class="nav-item">
+    				<a class="nav-link" title="Nova transação" href="{% url 'url_new' %}">
+                        Criar - {% fontawesome_icon 'plus' %}
+                    </a>
+    			</li>
+    			<li class="nav-item">
+    				<a class="nav-link" title="Listar Transações" href="{% url 'url_list' %}">
+                        Listar - {% fontawesome_icon 'list' %}
+                    </a>
+                </li>
+                <li class="nav-item">
+    				<a class="nav-link" title="Perfil" href="{% url 'profile' %}">
+                        Pefil - {% fontawesome_icon 'user' %}
+                    </a>
+    			</li>
+    			<li class="nav-item">
+    				<a class="nav-link" title="Sair" href="{% url 'logout' %}">
+                        Sair - {% fontawesome_icon 'sign-out' %}
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" title="Entrar" href="{% url 'login' %}">
+                        Entrar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" title="Registrar" href="{% url 'register' %}">
+                        Registre-se
+                    </a>
+                </li>
+            {% endif %}
+           </ul>
+        </div>
+
+	</nav>
+	<div class="content container mt-4">
+		<div class="row">
+			<div class="col-12">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+        <footer class="mb-2"></footer>
+	</div>
+</body>
+
+</html>

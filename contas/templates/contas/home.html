@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contas</title>
-</head>
-<body>
-    <p>Bem vindo ao Contas.</p>
-    <a href="{% url 'url_new' %}">Criar nova transação</a>
-    <a href="{% url 'url_list' %}">Listar Transações</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+	<h4>Olá {{ user.username }}, bem vindo ao Transações!
+	<br>O que deseja fazer?</h4>
+	<hr class="mt-0 mb-4">
+	<div class="mt-4">
+		<a class="btn btn-info btn-sm" href="{% url 'url_new' %}">Criar nova transação</a>
+		<a class="btn btn-info btn-sm" href="{% url 'url_list' %}">Listar Transações</a>
+	</div>
+</div>
+{% endblock %}
