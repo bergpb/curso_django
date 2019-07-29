@@ -12,6 +12,7 @@ django = "*"
 django-crispy-forms = "*"
 django-fontawesome = "*"
 django-extensions = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

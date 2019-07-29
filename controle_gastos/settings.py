@@ -112,7 +112,7 @@ USE_L10N = False
 USE_TZ = True
 
 # https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy
-DATE_INPUT_FORMATS = ('%d/%m/%Y','%Y-%m-%d')
+DATE_INPUT_FORMATS = ('%d/%m/%Y', '%Y-%m-%d')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -120,5 +120,9 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y','%Y-%m-%d')
 
 STATIC_URL = '/static/'
 
+# full path to uploaded files in filesystem
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# create /media/profile_pics and put media inside him
+MEDIA_URL = '/media/'
 
 FONTAWESOME_CSS_URL = '/static/contas/css/font-awesome.min.css'
