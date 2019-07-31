@@ -5,41 +5,41 @@
 	<h4>Listagem</h4>
 	<hr class="mt-0 mb-4">
 	{% if transacoes|length > 0 %}
-	<table class="table table-sm">
-		<thead>
-			<tr>
-				<th>Descrição</th>
-				<th>Data</th>
-				<th>Valor</th>
-				<th>Categoria</th>
-				<th>Observações</th>
-				<th>Ações</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for t in transacoes %}
-			<tr>
-				<td>{{ t.descricao }}</td>
-				<td>{{ t.data|date:'d/m/Y' }}</td>
-				<td>R$ {{ t.valor }}</td>
-				<td>{{ t.categoria }}</td>
-				<td>{{ t.observacoes }}</td>
-				<td>
-					<a class="btn btn-info btn-sm" title="Editar" href="{% url 'url_update' t.id %}">
-						{% fontawesome_icon 'pencil' %}
-					</a>
-					<a class="btn btn-danger btn-sm" title="Remover" href="{% url 'url_delete' t.id %}">
-						{% fontawesome_icon 'trash' %}
-					</a>
-				</td>
-			</tr>
-			{% endfor %}
-		<tbody>
-	</table>
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th>Descrição</th>
+					<th>Data</th>
+					<th>Valor</th>
+					<th>Categoria</th>
+					<th>Observações</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for t in transacoes %}
+				<tr>
+					<td>{{ t.description }}</td>
+					<td>{{ t.date|date:'d/m/Y' }}</td>
+					<td>R$ {{ t.value }}</td>
+					<td>{{ t.category }}</td>
+					<td>{{ t.notes }}</td>
+					<td>
+						<a class="btn btn-info btn-sm" title="Editar" href="{% url 'url_update' t.id %}">
+							{% fontawesome_icon 'pencil' %}
+						</a>
+						<a class="btn btn-danger btn-sm" title="Remover" href="{% url 'url_delete' t.id %}">
+							{% fontawesome_icon 'trash' %}
+						</a>
+					</td>
+				</tr>
+				{% endfor %}
+			<tbody>
+		</table>
 	{% else %}
-	<p>Sem informações</p>
+		<p>Sem informações</p>
 	{% endif %}
-	<a class="btn btn-success btn-sm" title="Adicionar" href="{% url 'url_new' %}">
-		{% fontawesome_icon 'plus' %}
-	</a>
+		<a class="btn btn-success btn-sm" title="Adicionar" href="{% url 'url_new' %}">
+			{% fontawesome_icon 'plus' %}
+		</a>
 {% endblock %}

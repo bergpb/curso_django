@@ -1,14 +1,33 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-      <div class="media">
-        <img style="width: 100px" class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-        </div>
-      </div>
-      <!-- FORM HERE -->
+  <h4>Perfil</h4>
+  <hr class="mt-0 mb-4">
+    <div class="container">
+        <div class="row">
+			<div class="col-3 text-center">
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<img class="rounded-circle" width="100px" src="{{ user.profile.image.url }}">
+						<h2 class="account-heading">{{ user.username }}</h2>
+						<p class="text-secondary">{{ user.email }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-9">
+			  <form method="POST" enctype="multipart/form-data">
+				  {% csrf_token %}
+				  <div class="row justify-content-center">
+					  <div class="col-md-6 col-sm-12">
+						  {{ u_form|crispy }}
+						  {{ p_form|crispy }}
+						  <button class="btn btn-outline-info btn-block btn-sm mt-2" type="submit" value="registrar">
+							  Atualizar
+						  </button>
+					  </div>
+				  </div>
+			  </form>
+			</div>
+		</div>
     </div>
 {% endblock content %}

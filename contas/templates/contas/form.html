@@ -9,19 +9,19 @@
     	{% csrf_token %}
     	<div class="row">
     		<div class="col-md-3 col-sm-12">
-    			{{ form.descricao|as_crispy_field }}
+    			{{ form.description|as_crispy_field }}
     		</div>
     		<div class="col-md-3 col-sm-12">
-    			{{ form.data|as_crispy_field }}
+    			{{ form.date|as_crispy_field }}
     		</div>
     		<div class="col-md-3 col-sm-12">
-    			{{ form.valor|as_crispy_field }}
+    			{{ form.value|as_crispy_field }}
     		</div>
     		<div class="col-md-3 col-sm-12">
-    			{{ form.categoria|as_crispy_field }}
+    			{{ form.category|as_crispy_field }}
     		</div>
     	</div>
-        {{ form.observacoes|as_crispy_field }}
+        {{ form.notes|as_crispy_field }}
     	<a class="btn btn-info btn-sm" title="Voltar" href="{% url 'home' %}">
             {% fontawesome_icon 'arrow-left' %}
         </a>
@@ -36,7 +36,7 @@
     </form>
     <script>
       $(function () {
-        $("#id_data").datepicker({
+        $("#id_date").datepicker({
           format:'dd/mm/yyyy',
         });
       });

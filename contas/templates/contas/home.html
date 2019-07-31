@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center">
-	<h4>Olá {{ user.username }}, bem vindo ao Transações!
-	<br>O que deseja fazer?</h4>
-	<hr class="mt-0 mb-4">
-	<div class="mt-4">
-		<a class="btn btn-info btn-sm" href="{% url 'url_new' %}">Criar nova transação</a>
-		<a class="btn btn-info btn-sm" href="{% url 'url_list' %}">Listar Transações</a>
+	<div class="text-center">
+		<h4>Olá {{ user.username }}, bem vindo ao Transações!</h4>
+		{% if gastos > 0 %}
+			<h6>Você já gastou <strong>R$: {{ gastos }}</strong> nesse mês.</h6>
+		{% endif %}
+		<hr class="mt-0 mb-4">
+		<div class="mt-4">
+			<a class="btn btn-info btn-sm" href="{% url 'url_new' %}">Criar nova transação</a>
+			<a class="btn btn-info btn-sm" href="{% url 'url_list' %}">Listar Transações</a>
+		</div>
 	</div>
-</div>
 {% endblock %}

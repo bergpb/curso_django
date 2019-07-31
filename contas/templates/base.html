@@ -31,22 +31,22 @@
     		{% if user.is_authenticated %}
     			<li class="nav-item">
     				<a class="nav-link" title="Nova transação" href="{% url 'url_new' %}">
-                        Criar - {% fontawesome_icon 'plus' %}
+                        Criar
                     </a>
     			</li>
     			<li class="nav-item">
     				<a class="nav-link" title="Listar Transações" href="{% url 'url_list' %}">
-                        Listar - {% fontawesome_icon 'list' %}
+                        Listar
                     </a>
                 </li>
                 <li class="nav-item">
     				<a class="nav-link" title="Perfil" href="{% url 'profile' %}">
-                        Pefil - {% fontawesome_icon 'user' %}
+                        Perfil
                     </a>
     			</li>
     			<li class="nav-item">
     				<a class="nav-link" title="Sair" href="{% url 'logout' %}">
-                        Sair - {% fontawesome_icon 'sign-out' %}
+                        Sair
                     </a>
                 </li>
             {% else %}

@@ -1,10 +1,14 @@
-from django.forms import ModelForm, Textarea
+from django import forms
 from .models import Transaction
 
-class TransactionForm(ModelForm):
+class TransactionForm(forms.ModelForm):
+  def __init__(self, *args, **kwargs):
+        super(TransactionForm, self).__init__(*args, **kwargs)
+        self.fields['category'].label = "Categoria"
+
   class Meta:
       model = Transaction
-      fields = ['data', 'descricao', 'valor', 'observacoes', 'categoria']
+      fields = ['date', 'description', 'value', 'notes', 'category']
       widgets = {
-        'observacoes': Textarea(attrs={'rows':4, 'cols':15}),
+        'notes': forms.Textarea(attrs={'rows':4, 'cols':15}),
       }

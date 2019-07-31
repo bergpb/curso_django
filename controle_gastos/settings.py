@@ -1,4 +1,5 @@
 import os
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -97,6 +98,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Messages configs
+MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
+                message_constants.INFO: 'info',
+                message_constants.SUCCESS: 'success',
+                message_constants.WARNING: 'warning',
+                message_constants.ERROR: 'danger',}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -126,3 +134,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 FONTAWESOME_CSS_URL = '/static/contas/css/font-awesome.min.css'
+
+# https://mailtrap.io
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =  'smtp.mailtrap.io'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
